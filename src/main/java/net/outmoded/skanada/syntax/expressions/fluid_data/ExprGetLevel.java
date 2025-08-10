@@ -1,4 +1,4 @@
-package net.outmoded.skanada.syntax.expressions;
+package net.outmoded.skanada.syntax.expressions.fluid_data;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -11,19 +11,20 @@ import org.bukkit.Location;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
+import java.lang.Integer;
 
 
-public class ExprGetFluidData extends SimpleExpression<FluidData> {
+public class ExprGetLevel extends SimpleExpression<Integer> {
     
     static {
-        Skript.registerExpression(ExprGetFluidData.class, FluidData.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-data|fluiddata|fluid data) of %location%");
+        Skript.registerExpression(ExprGetLevel.class, Integer.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-level|fluid level) of %fluiddata%");
     }
-    private Expression<Location> locationExpression;
+    private Expression<FluidData> fluidDataExpression;
 
     @Override
-    public Class<? extends FluidData> getReturnType() {
+    public Class<? extends Integer> getReturnType() {
         //1
-        return FluidData.class;
+        return Integer.class;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class ExprGetFluidData extends SimpleExpression<FluidData> {
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
-        locationExpression = (Expression<Location>) exprs[0];
+        fluidDataExpression = (Expression<FluidData>) exprs[0];
         return true;
     }
 
@@ -46,19 +47,11 @@ public class ExprGetFluidData extends SimpleExpression<FluidData> {
 
     @Override
     @Nullable
-    protected FluidData[] get(Event event) {
-    //FluidData fluidData;
-    //fluidData.getLevel();
-    //fluidData.getFluidType();
-    //fluidData.computeFlowDirection();
-    //fluidData.computeHeight();
+    protected Integer[] get(Event event) {
 
-
-        Location location = locationExpression.getSingle(event);
-        if (location != null){
-            FluidData fluidData = location.getWorld().getFluidData(location);
-            if (fluidData != null)
-                return new FluidData[]{fluidData};
+        FluidData fluidData = fluidDataExpression.getSingle(event);
+        if (fluidData != null){
+            return new Integer[]{fluidData.getLevel()};
 
         }
 

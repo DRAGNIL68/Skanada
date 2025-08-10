@@ -13,27 +13,28 @@ import org.joml.Vector3f;
 import javax.annotation.Nullable;
 
 
-public class ExprConvertVectorToFloat extends SimpleExpression<Vector3f> {
+public class ExprConvertVector3fToVector extends SimpleExpression<Vector> {
     
     static {
-        Skript.registerExpression(ExprConvertVectorToFloat.class, Vector3f.class, ExpressionType.COMBINED, "[skanada] to %Vector3f% as double-vec"); // set {_vec1} to {_vec} as double-vec
+        Skript.registerExpression(ExprConvertVector3fToVector.class, Vector.class, ExpressionType.COMBINED, "[skanada] %vector3f% as vector"); // set {_vec1} to {_vec} as vector
     }
-    private Expression<Vector> vectorExpression;
+    private Expression<Vector3f> vector3fExpression;
 
     @Override
-    public Class<? extends Vector3f> getReturnType() {
+    public Class<? extends Vector> getReturnType() {
         //1
-        return Vector3f.class;
+        return Vector.class;
     }
 
     @Override
     public boolean isSingle() {
         //2
-        return false;
+        return true;
     }
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
+        vector3fExpression = (Expression<Vector3f>) exprs[0];
         return true;
     }
 
@@ -45,10 +46,10 @@ public class ExprConvertVectorToFloat extends SimpleExpression<Vector3f> {
 
     @Override
     @Nullable
-    protected org.joml.Vector3f[] get(Event event) {
-        Vector vector = vectorExpression.getSingle(event);
-        if (vector != null){
-            return new Vector3f[]{vector.toVector3f()};
+    protected Vector[] get(Event event) {
+        Vector3f vector3f = vector3fExpression.getSingle(event);
+        if (vector3f != null){
+            return new Vector[]{new Vector(vector3f.x, vector3f.y, vector3f.z)};
 
         }
 

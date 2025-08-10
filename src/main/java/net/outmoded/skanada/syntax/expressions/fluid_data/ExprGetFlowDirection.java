@@ -9,22 +9,23 @@ import ch.njol.util.Kleenean;
 import io.papermc.paper.block.fluid.FluidData;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
+import org.bukkit.util.Vector;
 
 import javax.annotation.Nullable;
-import java.lang.Integer;
 
 
-public class ExprGetLevel extends SimpleExpression<Integer> {
+public class ExprGetFlowDirection extends SimpleExpression<Vector> {
     
     static {
-        Skript.registerExpression(ExprGetLevel.class, Integer.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-level|fluid level) of %fluiddata%");
+        Skript.registerExpression(ExprGetFlowDirection.class, Vector.class, ExpressionType.COMBINED, "[skanada] [get] [compute] (fluid-direction|fluid direction) %location% of %fluiddata%");
     }
     private Expression<FluidData> fluidDataExpression;
+    private Expression<Location> locationExpression;
 
     @Override
-    public Class<? extends Integer> getReturnType() {
+    public Class<? extends Vector> getReturnType() {
         //1
-        return Integer.class;
+        return Vector.class;
     }
 
     @Override
@@ -35,7 +36,8 @@ public class ExprGetLevel extends SimpleExpression<Integer> {
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
-        fluidDataExpression = (Expression<FluidData>) exprs[0];
+        fluidDataExpression = (Expression<FluidData>) exprs[1];
+        locationExpression = (Expression<Location>) exprs[0];
         return true;
     }
 
@@ -47,11 +49,11 @@ public class ExprGetLevel extends SimpleExpression<Integer> {
 
     @Override
     @Nullable
-    protected Integer[] get(Event event) {
-
+    protected Vector[] get(Event event) {
+        Location location = locationExpression.getSingle(event);
         FluidData fluidData = fluidDataExpression.getSingle(event);
-        if (fluidData != null){
-            return new Integer[]{fluidData.getLevel()};
+        if (fluidData != null && location != null){
+            return new Vector[]{fluidData.computeFlowDirection(location)};
 
         }
 

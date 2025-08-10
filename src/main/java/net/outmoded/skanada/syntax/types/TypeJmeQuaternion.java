@@ -5,24 +5,24 @@ import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
-import io.papermc.paper.block.fluid.FluidData;
+import com.jme3.math.Quaternion;
 
 import javax.annotation.Nullable;
 
-public class TypeFluidData {
+public class TypeJmeQuaternion {
 
     static {
-        Classes.registerClass(new ClassInfo<>(FluidData.class, "fluiddata")
-                .user("fluiddatas?")
-                .name("fluiddata")
+        Classes.registerClass(new ClassInfo<>(Quaternion.class, "jmequaternion")
+                .user("jmequaternions?")
+                .name("jmequaternion")
                 .description("N/A")
                 .examples("N/A")
-                .defaultExpression(new EventValueExpression<>(FluidData.class))
-                .parser(new Parser<FluidData>() {
+                .defaultExpression(new EventValueExpression<>(Quaternion.class))
+                .parser(new Parser<Quaternion>() {
 
                     @Override
                     @Nullable
-                    public FluidData parse(String input, ParseContext context) {
+                    public Quaternion parse(String input, ParseContext context) {
                         return null;
                     }
 
@@ -32,14 +32,14 @@ public class TypeFluidData {
                     }
 
                     @Override
-                    public String toVariableNameString(FluidData fluidData) {
-                        return fluidData.toString();
+                    public String toVariableNameString(Quaternion Quaternion) {
+                        return Quaternion.toString();
                     }
 
 
                     @Override
-                    public String toString(FluidData fluidData, int flags) {
-                        return toVariableNameString(fluidData);
+                    public String toString(Quaternion Quaternion, int flags) {
+                        return toVariableNameString(Quaternion);
                     }
 
 

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.outmoded</groupId>
-    <artifactId>skanada</artifactId>
+    <artifactId>Skanada</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>skanada</name>
+    <name>Skanada</name>
 
     <properties>
         <java.version>21</java.version>
@@ -55,14 +55,46 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>skript-releases</id>
+            <name>Skript Repository</name>
+            <url>https://repo.skriptlang.org/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21-R0.1-SNAPSHOT</version>
+            <version>1.21.7-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.SkriptLang</groupId>
+            <artifactId>Skript</artifactId>
+            <version>2.12.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jme3</groupId>
+            <artifactId>Libbulletjme</artifactId>
+            <version>22.0.2-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>C:\Users\linga\Desktop\servers\1.21\plugins\engine\Libbulletjme-22.0.2-SNAPSHOT.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

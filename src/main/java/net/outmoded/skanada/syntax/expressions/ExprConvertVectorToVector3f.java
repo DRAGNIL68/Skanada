@@ -13,10 +13,10 @@ import org.joml.Vector3f;
 import javax.annotation.Nullable;
 
 
-public class ExprConvertVectorToFloat extends SimpleExpression<Vector3f> {
+public class ExprConvertVectorToVector3f extends SimpleExpression<Vector3f> {
     
     static {
-        Skript.registerExpression(ExprConvertVectorToFloat.class, Vector3f.class, ExpressionType.COMBINED, "[skanada] to %Vector3f% as double-vec"); // set {_vec1} to {_vec} as double-vec
+        Skript.registerExpression(ExprConvertVectorToVector3f.class, Vector3f.class, ExpressionType.COMBINED, "[skanada] %vector% as vector3f"); // set {_vec1} to {_vec} as vector
     }
     private Expression<Vector> vectorExpression;
 
@@ -29,11 +29,12 @@ public class ExprConvertVectorToFloat extends SimpleExpression<Vector3f> {
     @Override
     public boolean isSingle() {
         //2
-        return false;
+        return true;
     }
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
+        vectorExpression = (Expression<Vector>) exprs[0];
         return true;
     }
 

@@ -6,24 +6,24 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import io.papermc.paper.block.fluid.FluidData;
+import org.bukkit.Location;
 import org.bukkit.event.Event;
-import org.bukkit.util.Vector;
-import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 
 
-public class ExprConvertVector3fToVector extends SimpleExpression<Vector> {
+public class ExprGetFluidData extends SimpleExpression<FluidData> {
     
     static {
-        Skript.registerExpression(ExprConvertVector3fToVector.class, Vector.class, ExpressionType.COMBINED, "[skanada] %quat% as skript-quat"); // set {_vec1} to {_vec} as vector
+        Skript.registerExpression(ExprGetFluidData.class, FluidData.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-data|fluiddata|fluid data) of %location%");
     }
-    private Expression<Vector3f> vector3fExpression;
+    private Expression<Location> locationExpression;
 
     @Override
-    public Class<? extends Vector> getReturnType() {
+    public Class<? extends FluidData> getReturnType() {
         //1
-        return Vector.class;
+        return FluidData.class;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ExprConvertVector3fToVector extends SimpleExpression<Vector> {
 
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, SkriptParser.ParseResult parser) {
-        vector3fExpression = (Expression<Vector3f>) exprs[0];
+        locationExpression = (Expression<Location>) exprs[0];
         return true;
     }
 
@@ -46,10 +46,19 @@ public class ExprConvertVector3fToVector extends SimpleExpression<Vector> {
 
     @Override
     @Nullable
-    protected Vector[] get(Event event) {
-        Vector3f vector3f = vector3fExpression.getSingle(event);
-        if (vector3f != null){
-            return new Vector[]{new Vector(vector3f.x, vector3f.y, vector3f.z)};
+    protected FluidData[] get(Event event) {
+    //FluidData fluidData;
+    //fluidData.getLevel();
+    //fluidData.getFluidType();
+    //fluidData.computeFlowDirection();
+    //fluidData.computeHeight();
+
+
+        Location location = locationExpression.getSingle(event);
+        if (location != null){
+            FluidData fluidData = location.getWorld().getFluidData(location);
+            if (fluidData != null)
+                return new FluidData[]{fluidData};
 
         }
 

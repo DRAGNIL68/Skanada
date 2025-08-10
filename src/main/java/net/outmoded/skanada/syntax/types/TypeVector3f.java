@@ -5,10 +5,11 @@ import ch.njol.skript.classes.Parser;
 import ch.njol.skript.expressions.base.EventValueExpression;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
+import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 
-public class Vector3f {
+public class TypeVector3f {
 
     static {
         Classes.registerClass(new ClassInfo<>(Vector3f.class, "vector3f")
@@ -32,7 +33,7 @@ public class Vector3f {
 
                     @Override
                     public String toVariableNameString(Vector3f vector3f) {
-                        return "x: ";
+                        return "x: "+vector3f.x+", y: "+vector3f.y+", :z "+vector3f.z;
                     }
 
 

@@ -9,23 +9,21 @@ import ch.njol.util.Kleenean;
 import io.papermc.paper.block.fluid.FluidData;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
-import org.bukkit.util.Vector;
-
 import javax.annotation.Nullable;
 
 
-public class ExprGetFlowDirection extends SimpleExpression<Vector> {
+public class ExprGetHeight extends SimpleExpression<Float> {
     
     static {
-        Skript.registerExpression(ExprGetFlowDirection.class, Vector.class, ExpressionType.COMBINED, "[skanada] [get] [compute] (fluid-direction|fluid direction) %location% of %fluiddata%");
+        Skript.registerExpression(ExprGetHeight.class, Float.class, ExpressionType.COMBINED, "[skanada] [get] [compute] (fluid-height|fluid height) %location% of %fluiddata%");
     }
     private Expression<FluidData> fluidDataExpression;
     private Expression<Location> locationExpression;
 
     @Override
-    public Class<? extends Vector> getReturnType() {
+    public Class<? extends Float> getReturnType() {
         //1
-        return Vector.class;
+        return Float.class;
     }
 
     @Override
@@ -49,11 +47,11 @@ public class ExprGetFlowDirection extends SimpleExpression<Vector> {
 
     @Override
     @Nullable
-    protected Vector[] get(Event event) {
+    protected Float[] get(Event event) {
         Location location = locationExpression.getSingle(event);
         FluidData fluidData = fluidDataExpression.getSingle(event);
         if (fluidData != null && location != null){
-            return new Vector[]{fluidData.computeFlowDirection(location)};
+            return new Float[]{fluidData.computeHeight(location)};
 
         }
 

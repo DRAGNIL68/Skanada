@@ -7,24 +7,22 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import io.papermc.paper.block.fluid.FluidData;
-import org.bukkit.Location;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import java.lang.Integer;
 
 
-public class ExprGetLevel extends SimpleExpression<Integer> {
-    
+public class ExprGetFluidType extends SimpleExpression<String> {
+
     static {
-        Skript.registerExpression(ExprGetLevel.class, Integer.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-level|fluid level) of %fluiddata%");
+        Skript.registerExpression(ExprGetFluidType.class, String.class, ExpressionType.COMBINED, "[skanada] [get] (fluid-type|fluid type) of %fluiddata%");
     }
     private Expression<FluidData> fluidDataExpression;
 
     @Override
-    public Class<? extends Integer> getReturnType() {
+    public Class<? extends String> getReturnType() {
         //1
-        return Integer.class;
+        return String.class;
     }
 
     @Override
@@ -47,11 +45,11 @@ public class ExprGetLevel extends SimpleExpression<Integer> {
 
     @Override
     @Nullable
-    protected Integer[] get(Event event) {
+    protected String[] get(Event event) {
 
         FluidData fluidData = fluidDataExpression.getSingle(event);
         if (fluidData != null){
-            return new Integer[]{fluidData.getLevel()};
+            return new String[]{fluidData.getFluidType().toString()};
 
         }
 
