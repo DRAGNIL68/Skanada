@@ -1,0 +1,4 @@
+name: Skanada
+version: '1.0'
+main: net.outmoded.skanada.Skanada
+api-version: '1.21'
