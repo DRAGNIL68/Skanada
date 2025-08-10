@@ -4,9 +4,17 @@ EXPRESSIONS:
     [skanada] %vector3f% as vector
     [skanada] %vector% as vector3f
     [skanada] [get] (fluid-data|fluiddata|fluid data) of %location%
+    [skanada] jmequaternion %jmequaternion% as quaternion
 
     FLUIDDATA:
         [skanada] [get] [compute] (fluid-direction|fluid direction) %location% of %fluiddata%
         [skanada] [get] (fluid-type|fluid type) of %fluiddata%
         [skanada] [get] [compute] (fluid-height|fluid height) %location% of %fluiddata%
         [skanada] [get] (fluid-level|fluid level) of %fluiddata%
+
+
+
+Types:
+    %fluiddata%
+    %jmequaternion%
+    %vector3f%
