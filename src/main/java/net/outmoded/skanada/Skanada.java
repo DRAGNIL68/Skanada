@@ -30,7 +30,7 @@ public final class Skanada extends JavaPlugin {
         }
 
         JmeLoader.registerLibrary();
-        //PhysicsSpace physicsSpace = new PhysicsSpace(PhysicsSpace.BroadphaseType.DBVT);
+
 
         // ###########################
         // Skript stuff

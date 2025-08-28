@@ -40,7 +40,7 @@ public class JmeLoader {
 
 
     }
-    // stolen from JSnapLoader examples and modified to use the bukkit logger
+    // stolen from JSnapLoaders examples and modified to use the bukkit logger
     public static void printDetails(NativeBinaryLoader loader) {
         Skanada.getInstance().getLogger().info("--------------------------------------------------------------");
         Skanada.getInstance().getLogger().info("OS: " + NativeVariant.OS_NAME.getProperty());
