@@ -2,9 +2,13 @@ package net.outmoded.skanada;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import com.jme3.bounding.BoundingBox;
+import com.jme3.bullet.PhysicsSpace;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.VoxelShape;
 
 import java.io.IOException;
 
@@ -25,6 +29,8 @@ public final class Skanada extends JavaPlugin {
             Skanada.getInstance().getLogger().warning("you are running a unsupported version: supported versions = 1.21.7/1.21.78");
         }
 
+        JmeLoader.registerLibrary();
+        //PhysicsSpace physicsSpace = new PhysicsSpace(PhysicsSpace.BroadphaseType.DBVT);
 
         // ###########################
         // Skript stuff
@@ -46,6 +52,12 @@ public final class Skanada extends JavaPlugin {
 
         }
 
+
+//      Location location = null;
+//      VoxelShape shape = event.getBlockPlaced().getBlockData().getCollisionShape(new Location(location.getWorld(), 0, 0, 0));
+//      shape.getBoundingBoxes().
+        //BoundingBox boundingBox = null;
+        //boundingBox.
         // ###########################
 
     }

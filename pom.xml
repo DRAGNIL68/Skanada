@@ -6,7 +6,7 @@
 
     <groupId>net.outmoded</groupId>
     <artifactId>Skanada</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <name>Skanada</name>
@@ -89,12 +89,38 @@
             <artifactId>commons-io</artifactId>
             <version>2.18.0</version>
         </dependency>
+
         <dependency>
-            <groupId>com.jme3</groupId>
-            <artifactId>Libbulletjme</artifactId>
-            <version>22.0.2-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>C:\Users\linga\Desktop\servers\1.21\plugins\engine\Libbulletjme-22.0.2-SNAPSHOT.jar</systemPath>
+            <groupId>com.github.stephengold</groupId>
+            <artifactId>Libbulletjme-Windows64</artifactId>
+            <classifier>DpRelease</classifier>
+            <version>22.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.stephengold</groupId>
+            <artifactId>Libbulletjme-MacOSX64</artifactId>
+            <classifier>DpRelease</classifier>
+            <version>22.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stephengold</groupId>
+            <artifactId>Libbulletjme-Linux64</artifactId>
+            <classifier>DpRelease</classifier>
+            <version>22.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.electrostat-lab</groupId>
+            <artifactId>snaploader</artifactId>
+            <version>1.1.1-stable</version>
+        </dependency>
+
+        <!-- only for IDE -->
+        <dependency>
+            <groupId>com.github.stephengold</groupId>
+            <artifactId>Libbulletjme-Windows64</artifactId>
+            <version>22.0.1</version>
+        </dependency>
+
     </dependencies>
 </project>
