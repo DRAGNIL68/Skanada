@@ -6,9 +6,11 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import com.jme3.bullet.objects.PhysicsRigidBody;
+import com.jme3.math.Vector3f;
 import org.bukkit.event.Event;
 import org.bukkit.util.Vector;
-import org.joml.Vector3f;
+
 
 import javax.annotation.Nullable;
 
@@ -46,10 +48,10 @@ public class ExprConvertVectorToVector3f extends SimpleExpression<Vector3f> {
 
     @Override
     @Nullable
-    protected org.joml.Vector3f[] get(Event event) {
+    protected Vector3f[] get(Event event) {
         Vector vector = vectorExpression.getSingle(event);
         if (vector != null){
-            return new Vector3f[]{vector.toVector3f()};
+            return new Vector3f[]{new Vector3f((float) vector.getX(), (float) vector.getY(), (float) vector.getZ())};
 
         }
 

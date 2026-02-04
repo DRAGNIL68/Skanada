@@ -6,7 +6,7 @@
 
     <groupId>net.outmoded</groupId>
     <artifactId>Skanada</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <name>Skanada</name>
@@ -93,19 +93,19 @@
         <dependency>
             <groupId>com.github.stephengold</groupId>
             <artifactId>Libbulletjme-Windows64</artifactId>
-            <classifier>DpRelease</classifier>
+            <classifier>SpRelease</classifier>
             <version>22.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.stephengold</groupId>
             <artifactId>Libbulletjme-MacOSX64</artifactId>
-            <classifier>DpRelease</classifier>
+            <classifier>SpRelease</classifier>
             <version>22.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.stephengold</groupId>
             <artifactId>Libbulletjme-Linux64</artifactId>
-            <classifier>DpRelease</classifier>
+            <classifier>SpRelease</classifier>
             <version>22.0.1</version>
         </dependency>
 

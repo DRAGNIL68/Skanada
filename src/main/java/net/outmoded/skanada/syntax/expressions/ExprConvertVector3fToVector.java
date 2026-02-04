@@ -6,9 +6,10 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import com.jme3.math.Vector3f;
 import org.bukkit.event.Event;
 import org.bukkit.util.Vector;
-import org.joml.Vector3f;
+
 
 import javax.annotation.Nullable;
 
